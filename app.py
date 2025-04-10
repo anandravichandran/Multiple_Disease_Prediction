@@ -13,7 +13,7 @@ st.set_page_config(page_title="Health Assistant",
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # loading the saved models
-
+#  in case cause the error change the file path based on your local machine
 diabetes_model = pickle.load(open(f'{working_dir}/saved_models/diabetes_model.sav', 'rb'))
 
 heart_disease_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))
@@ -85,7 +85,14 @@ if selected == 'Diabetes Prediction':
         diab_prediction = diabetes_model.predict([user_input])
 
         if diab_prediction[0] == 1:
-            diab_diagnosis = 'The person is diabetic'
+            diab_diagnosis = ('## The Person has Diabetic Diseases \n\n'
+            '#### Description: \n'
+            'The system suggests that you may have signs consistent with diabetes. '
+            'Diabetes is a chronic condition that affects how your body processes blood sugar (glucose). '
+            'Common symptoms include increased thirst, frequent urination, fatigue, blurred vision, and slow healing of wounds. '
+            'If not managed properly, it can lead to serious complications like heart disease, kidney failure, or nerve damage. '
+            'It’s recommended to consult a healthcare provider for a blood sugar test and personalized treatment plan. '
+            'A healthy diet, regular exercise, and proper medication can help control diabetes effectively.')
         else:
             diab_diagnosis = 'The person is not diabetic'
 
@@ -152,7 +159,9 @@ if selected == 'Heart Disease Prediction':
         heart_prediction = heart_disease_model.predict([user_input])
 
         if heart_prediction[0] == 1:
-            heart_diagnosis = 'The person is having heart disease'
+            heart_diagnosis = ('## The person has Heart Disease  \n \n'
+            '### Description:\n'
+            'Based on your inputs, there"s a possibility that you may be at risk of heart disease. Heart disease typically involves narrowed or blocked blood vessels that can lead to a heart attack, chest pain (angina), or stroke. It may also refer to conditions that affect your heart’s muscle, valves, or rhythm. Common symptoms include chest discomfort, shortness of breath, fatigue, or irregular heartbeat. It is advised to consult a cardiologist for a detailed diagnosis and begin appropriate treatment. Early detection and lifestyle changes like a balanced diet, regular exercise, and avoiding smoking can significantly reduce the risk.')
         else:
             heart_diagnosis = 'The person does not have any heart disease'
 
@@ -247,7 +256,9 @@ if selected == "Parkinsons Prediction":
         parkinsons_prediction = parkinsons_model.predict([user_input])
 
         if parkinsons_prediction[0] == 1:
-            parkinsons_diagnosis = "The person has Parkinson's disease"
+            parkinsons_diagnosis = "## The person has Parkinson's disease \n \n"
+            "#### Description:\n'"
+            "Your responses and data suggest that you may be showing signs associated with Parkinson’s disease. Parkinson’s is a progressive nervous system disorder that affects movement. It often starts with tremors, stiffness, slowness of movement, and changes in speech or posture. While there is no cure, medications and therapies can help manage symptoms and improve quality of life. It’s essential to see a neurologist for a proper examination. Early detection can lead to better symptom control and planning."
         else:
             parkinsons_diagnosis = "The person does not have Parkinson's disease"
 
@@ -350,8 +361,12 @@ if selected == 'Kidney Disease Prediction':
         prediction = kidney_disease_model.predict([user_input])
 
         if prediction[0] == 1:
-            kindey_diagnosis = "The person has Kidney's disease"
+            kindey_diagnosis = "## The person has Kidney's Disease \n\n'" 
+            "#### Description:\n'"
+            "According to your inputs, you may be showing early indicators of kidney disease. Kidney disease affects your body’s ability to filter waste and excess fluids from your blood. Symptoms might include fatigue, swelling in ankles or hands, frequent urination, and changes in appetite. It's crucial to consult a nephrologist and undergo necessary tests like blood and urine analysis. Maintaining blood pressure, managing blood sugar, and staying hydrated can help slow disease progression"
         else:
             kindey_diagnosis = "The person does not have Kidney's disease"
     
     st.success(kindey_diagnosis)
+
+
